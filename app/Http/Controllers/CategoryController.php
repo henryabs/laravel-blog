@@ -75,6 +75,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
+        if(is_null($category)){
+            return response()->json(['message' => 'Resource not found'], 404);
+        }
         return view('backend.category.edit', ['category' => $category]);
     }
 
