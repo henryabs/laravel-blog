@@ -1,10 +1,9 @@
 @extends('layout')
-@section('title', $title)
 @section('content')
 <div class="container-fluid">
     <ol class="breadcrumb mt-2">
     <li class="breadcrumb-item">
-      <a href="#">Category</a>
+      <a href="#">Post</a>
     </li>
     <li class="breadcrumb-item active">Lists</li>
   </ol>
@@ -12,8 +11,8 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            All Category
-            <a href="{{url('admin/categories/create')}}" class="float-right btn btn-sm btn-dark">Create Category</a>
+            All Post
+            <a href="{{url('admin/posts/create')}}" class="float-right btn btn-sm btn-dark">Create Post</a>
         </div>
         @if(Session::has('success'))
         <p class="text-success">{{session('success')}}</p>
@@ -32,19 +31,19 @@
                     
                     <tbody>
                         
-                        @foreach($categories as $category)
+                        @foreach($posts as $post)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->title}}</td>
-                                <td><img src="{{asset($category->image)}}" alt="" width="100px"></td>
+                                <td>{{$post->id}}</td>
+                                <td>{{$post->title}}</td>
+                                <td><img src="{{asset($post->thumbnail)}}" alt="" width="100px"></td>
                                 <td>
-                                    <a href="/admin/categories/{{$category->id}}/edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                    <a href="/admin/posts/{{$post->id}}/edit" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                                     
 
-                                    <form action="/admin/categories/{{$category->id}}" method="POST">
+                                    <form action="/admin/posts/{{$post->id}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <input type="hidden" value="{{$category->id}}" name="id">
+                                        <input type="hidden" value="{{$post->id}}" name="id">
                                         <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>

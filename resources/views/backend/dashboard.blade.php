@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title', $title)
 @section('content')
     <div class="container-fluid">
                         <ol class="breadcrumb mt-2">
