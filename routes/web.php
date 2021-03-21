@@ -26,3 +26,7 @@ Route::post('/admin/login', [AdminController::class, 'submit_login']);
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 Route::resource('/admin/categories', CategoryController::class);
 Route::resource('/admin/posts', PostController::class);
+
+Route::get('/test', function(){
+	return response()->json(['message' => 'It works'], 200);
+});
